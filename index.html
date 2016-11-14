@@ -12,23 +12,98 @@ height: 80%;
 text-align: center;
 }
 .circle {
-margin-top: 15%;
+position: absolute;
+top: 30%;
 width: 50px;
 height: 50px;
 border-radius: 25px;
 border: 1px solid black;
+display: none;
 }
 .control {
     text-align: initial;
     margin: 15px;
     margin-left: 40%;
 }
+.tools {
+    margin-top: 20%;
+}
 .control > button {
 margin-right: 10px;
 }
 </style>
 <script>
+ function auto() {
+circle.style.transition = 'left 2s, backgroundColor 1s, top 5s';
 
+setTimeout(() => {
+circle.style.left='95%';
+circle.style.display='block';
+}, 1000);
+setTimeout(() => {
+circle.style.backgroundColor='#123';
+}, 3000);
+setTimeout(() => {
+circle.style.left='0';
+}, 3000);
+setTimeout(() => {
+circle.style.backgroundColor='#fa2';
+}, 5000);
+setTimeout(() => {
+circle.style.left='95%';
+}, 5000);
+setTimeout(() => {
+circle.style.backgroundColor='#ee5';
+}, 7000);
+setTimeout(() => {
+circle.style.left='0';
+}, 7000);
+setTimeout(() => {
+circle.style.backgroundColor='#fa2';
+}, 9000);
+setTimeout(() => {
+circle.style.top='2000px';
+}, 9000);
+setTimeout(() => {
+circle.style.display='none';
+}, 10000);
+}
+
+function reset() {
+
+circle.style.display = 'none';
+circle.style.left = '0';
+circle.style.top = '30%';
+circle.style.backgroundColor ='#fff';
+
+}
+
+function manually() {
+ const sp = parseInt(window.speed.value)/1000;
+ const iter = parseInt(window.iterations.value);
+ const color = window.colorPicker.value;
+ circle.style.backgroundColor=color;
+ let i;
+circle.style.transition = 'left ' + sp+ 's, backgroundColor 1s, top 5s';
+
+circle.style.display='block';
+for (i = 1; i <= iter+5; i++){
+const timeout = (sp * 1000 * i);
+ setTimeout(()=>{
+circle.style.left='95%';
+}, timeout);
+setTimeout(() => {
+circle.style.left='0';
+}, timeout + sp*1000);
+}
+setTimeout(() => {
+circle.style.top='2000px';
+}, 2000 + i * sp * 1000);
+setTimeout(() => {
+circle.style.display='none';
+}, 2000 + i * sp * 1000);
+
+}
 </script>
 </head>
 <body>
@@ -41,14 +116,14 @@ By <a href="http://github.com/ddanilets">Dmytro Danylets</a>
 </h2>
 </div>
 <div class="app">
-<div class="circle">
+<div class="circle" id="circle">
 
 </div>
 <div class="tools">
   <div class="control"><label for="speed">Enter speed</label><input id="speed" type="text"></div>
   <div class="control"><label for="iterations">Set number of iterations</label><input id="iterations" type="number"></div>
   <div class="control"><label for="colorPicker">Choose a base color</label><input type="color" id="colorPicker"></div>
-  <div class="control"><button onclick="auto();">Auto</button><button onclick="manually();">Manually</button></div>
+  <div class="control"><button onclick="auto();">Auto</button><button onclick="manually();">Manually</button><button onclick="reset();">Reset</button></div>
 </div>
 </div>
 </body>
