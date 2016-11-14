@@ -1,0 +1,55 @@
+<html>
+<head>
+<style>
+.main-header {
+width: 100%;
+height: 20%;
+text-align: center;
+}
+.app {
+width: 100%;
+height: 80%;
+text-align: center;
+}
+.circle {
+margin-top: 15%;
+width: 50px;
+height: 50px;
+border-radius: 25px;
+border: 1px solid black;
+}
+.control {
+    text-align: initial;
+    margin: 15px;
+    margin-left: 40%;
+}
+.control > button {
+margin-right: 10px;
+}
+</style>
+<script>
+
+</script>
+</head>
+<body>
+<div class="main-header">
+<h1>
+This is a laboratory work # 3 on the "Software visualization" discipline
+</h1>
+<h2>
+By <a href="http://github.com/ddanilets">Dmytro Danylets</a>
+</h2>
+</div>
+<div class="app">
+<div class="circle">
+
+</div>
+<div class="tools">
+  <div class="control"><label for="speed">Enter speed</label><input id="speed" type="text"></div>
+  <div class="control"><label for="iterations">Set number of iterations</label><input id="iterations" type="number"></div>
+  <div class="control"><label for="colorPicker">Choose a base color</label><input type="color" id="colorPicker"></div>
+  <div class="control"><button onclick="auto();">Auto</button><button onclick="manually();">Manually</button></div>
+</div>
+</div>
+</body>
+</html>
